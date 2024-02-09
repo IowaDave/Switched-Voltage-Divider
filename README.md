@@ -17,7 +17,7 @@ Advantages and disadvantages for using transistors, rather than MOSFETs, will be
 
 The diagram depicts an *unloaded* voltage divider. It satisfies requirements because the application in this case does not need to source any *current* at the 12-volt presence. It merely needs to sense the potential.
 
-Q1 is a 2n3906 bipolar-junction PNP-type transistor. The emitter connects to the 16-volt power supply. The collector sources current into the voltage divider when the base voltage is pulled low.
+Q1 is a 2N3906 bipolar-junction PNP-type transistor. The emitter connects to the 16-volt power supply. The collector sources current into the voltage divider when the base voltage is pulled low.
 
 >***Important!***<br>
 >When the base is pulled low (meaning, it has a path to ground), current is going to flow out of that base at a voltage level of near 16 volts.
@@ -28,9 +28,9 @@ Q1 is a 2n3906 bipolar-junction PNP-type transistor. The emitter connects to the
 >
 >The second bad thing is to blow up the transistor. It goes POW! and pieces fly off with too much current through the base. The resistor, R5, limits the current.
 
-Q2 is a 2n3904 bipolar-junction NPN-type transistor. It serves to drive the base of the PNP. The NPN shorts the 16-volt potential of the PNP base to ground when the controller applies 5 volts to the base of the NPN.
+Q2 is a 2N3904 bipolar-junction NPN-type transistor. It serves to drive the base of the PNP. The NPN shorts the 16-volt potential of the PNP base to ground when the controller applies 5 volts to the base of the NPN.
 
-The base of the NPN will draw a bit of current from the controller. An Arduino digital I/O pin in OUTPUT mode will source 5 current when it is HIGH. Here again, the R5 resistor limits the current.
+The base of the NPN will draw a bit of current from the controller. An Arduino digital I/O pin in OUTPUT mode will source current when it is HIGH. Here again, the R5 resistor limits the current.
 
 ### Untangling the Transistor Jargon
 They are versatile things, transistors. For professional communications, engineers practice a rich, private jargon when they talk to each other about transistors.
