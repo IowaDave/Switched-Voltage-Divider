@@ -81,6 +81,8 @@ When current can flow in through the base, the it can flow also out through the 
 * 16-volt current energizes the voltage divider.
 * A 12-volt potential appears at the Point-of-Presence.
 
+In this way, toggling a 5-volt output pin of an Arduino or other suitable controller can turn a 12-volt signal on and off, without exposing the controller to a voltage greater than it can withstand.
+
 ### Advantages and Disadvantages of Transistors
 Someone is likely to object that a MOSFET or two would better serve the purpose, for several reasons that touch upon disadvantages of using transistors.
 
