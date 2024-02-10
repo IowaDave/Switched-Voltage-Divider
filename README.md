@@ -17,20 +17,20 @@ Advantages and disadvantages for using transistors, rather than MOSFETs, will be
 
 The diagram depicts an *unloaded* voltage divider. It satisfies requirements because the application in this case does not need to source any *current* at the 12-volt presence. It merely needs to sense the potential.
 
-Q1 is a 2N3906 bipolar-junction PNP-type transistor. The emitter connects to the 16-volt power supply. The collector sources current into the voltage divider when the base voltage is pulled low.
+Q1 is a 2N3906 bipolar-junction PNP-type transistor. The emitter connects to the 16-volt power supply. The collector sources about 4 milliAmps of current into the 4K-Ohm voltage divider when the base voltage is pulled low.
 
 >***Important!***<br>
->When the base is pulled low (meaning, it has a path to ground), current is going to flow out of that base at a voltage level of near 16 volts.
+>When the base is pulled low (meaning, it has a path to ground), current will flow out of the PNP's base too, also at a voltage level of near 16 volts.
 >
->This can cause two bad things to happen.
+>This has the potential to cause two bad things to happen.
 >
->The first bad thing is to destroy an Arduino, if the PNP base connects directly to an I/O pin. Those pins cannot tolerate much above 5 volts and 40 milliAmps. Q2 protects the Arduino.
+>The first bad thing is to destroy an Arduino, if the PNP base connects directly to an I/O pin. Those pins cannot tolerate much above 5 volts. Q2 protects the Arduino.
 >
->The second bad thing is to blow up the transistor. It goes POW! and pieces fly off with too much current through the base. The resistor, R5, limits the current.
+>The second bad thing is to blow up the transistor. It goes POW! and pieces fly off with too much current through the base. The 5K-ohm resistor, R5, limits the current to about 3 milliAmps at 16 volts. 5K was an arbitrary choice. Only about 0.4 milliAmps through the base is needed to allow 4 milliAmps through the collector.
 
 Q2 is a 2N3904 bipolar-junction NPN-type transistor. It serves to drive the base of the PNP. The NPN shorts the 16-volt potential of the PNP base to ground when the controller applies 5 volts to the base of the NPN.
 
-The base of the NPN will draw a bit of current from the controller. An Arduino digital I/O pin in OUTPUT mode will source current when it is HIGH. Here again, the R5 resistor limits the current.
+The base of the NPN will draw a bit of current from the controller. An Arduino digital I/O pin in OUTPUT mode will source current when it is HIGH. Current limitation is a good idea here, also. The 2K-ohm R4 resistor limits the current to about 2.5 milliAmps.
 
 ### Untangling the Transistor Jargon
 They are versatile things, transistors. For professional communications, engineers practice a rich, private jargon when they talk to each other about transistors.
@@ -57,6 +57,8 @@ When the base is given a path to ground, then current can flow both through the 
 
 * The voltage divider is then energized.
 * 12 volts can be measured at the Point-of-Presence.
+
+What is the 10K resistor, R3, doing there? It ensures that the base voltage of the PNP will equal that of the emitter whenever the NPN transistor is not conducting.
 
 #### NPN Transistor
 The 2N3904 is in a *low-side* position with respect to the PNP. That is, it stands between the high-voltage potential of the PNP and ground.
@@ -102,13 +104,4 @@ PCMs can be more difficult to find and more expensive for hobbyists like me, com
 Bob Dorr, a famous Blues musician in Iowa, once told me, "The best ability is *avail*ability." PNP transistors shine in that light for this purpose. Even better, I had them on hand already.
 
 Now you know why I used transistors.
-
-### Circuit To-Dos
-A few more resistors will likely come into play as my parallel programmer project advances.
-
-1. A 10-K pullup between the PNP's base and the 16-volt source could help to guard against brief, unwanted current flow when the base is in an indeterminate state, such as when the transistor is first powering-up.
-
-2. A current-limiting resistor on the base of the NPN might make sense. It needs less than 1 milliAmp of current there. Any resistor value ranging from 1K to 5K ought to satisfy requirements.
-
-3. A current-limiting resistor might be needed between the Point-of-Presence and whatever connects to it. Or it might not. Parallel programming connects it to the reset pin of the target AVR controller. Reset is an ordinary I/O pin that will be and remain in a high-impedance state. I believe "high-impedance" means no current would flow through the pin in any event.
 
