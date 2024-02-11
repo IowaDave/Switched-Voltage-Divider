@@ -148,7 +148,7 @@ Anyway, here's the point. I can place a resistor of any value within a very wide
 2. the voltage across the transistor between the emitter and the collector will be close to 0.2; and
 3. the voltage measured across the transistor between the emitter and the base will be close to 1.0.
 
-The collector's voltage will be greater than that of the base *by the design of the transistor* and not due to any decision I made, so long as I pull the base down by more than 1 volt and allow current out of the base at least equal to 1/10 of that through the collector.
+The collector's voltage will be greater than that of the base *by the physics of the transistor* and not due to any decision I made, so long as I pull the base down by more than 1 volt and allow current out of the base at least equal to 1/10 of that through the collector.
 
 Dear friends who read this far: please kindly fill the holes remaining in my head about all this.
 
